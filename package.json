@@ -12,10 +12,15 @@
     "@react-query-firebase/database": "1.0.0-dev.2",
     "bootstrap": "^5.2.3",
     "firebase": "^9.19.1",
+    "firebaseui": "^6.0.2",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.10.0",
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

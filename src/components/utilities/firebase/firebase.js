@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
+import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,3 +18,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig)
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore()
+
+export const signInWithGoogle = () => {
+  signInWithPopup(getAuth(firebaseConfig), new GoogleAuthProvider())
+}

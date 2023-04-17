@@ -1,16 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { hasConflict } from './utilities/time'
-import { getCourse } from './utilities/firebase/api'
-
-export const AllCourses = async () => {
-  const querySnapshot = await getCourse()
-  const docs = []
-  querySnapshot.forEach((doc) => {
-    docs.push({ ...doc.data(), id: doc.id })
-  })
-  return addScheduleTimes(await docs[0])
-}
+import { useNavigate } from 'react-router-dom'
 
 export const Banner = ({ title }) => (
     <h1>{ title }</h1>
@@ -30,6 +21,7 @@ const toggle = (x, lst) => (
   lst.includes(x) ? lst.filter(y => y !== x) : [x, ...lst]
 )
 export const Course = ({ course, selected, setSelected }) => {
+  const navigate = useNavigate()
   const isSelected = selected.includes(course)
   const isDisabled = !isSelected && hasConflict(course, selected)
   const style = {
@@ -38,7 +30,8 @@ export const Course = ({ course, selected, setSelected }) => {
   return (
     <div className="card m-1 p-2"
       style={style}
-      onClick={isDisabled ? null : () => setSelected(toggle(course, selected))}>
+      onClick={isDisabled ? null : () => setSelected(toggle(course, selected))}
+      onDoubleClick={() => navigate('/edit', { state: course })}>
       <div className="card-body">
         <div className="card-title">{ getCourseTerm(course) } CS { getCourseNumber(course) }</div>
         <div className="card-text">{ course.title }</div>
@@ -70,7 +63,7 @@ export const TermSelector = ({ term, setTerm }) => (
 
 const meetsPat = /^ *((?:M|Tu|W|Th|F)+) +(\d\d?):(\d\d) *[ -] *(\d\d?):(\d\d) *$/
 
-const timeParts = meets => {
+export const timeParts = meets => {
   const [match, days, hh1, mm1, hh2, mm2] = meetsPat.exec(meets) || []
   return !match
     ? {}

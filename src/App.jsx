@@ -2,18 +2,20 @@
 import { useState, useEffect } from 'react'
 import { Banner, addScheduleTimes } from './components/Course'
 import { CourseList } from './components/utilities/CourseList'
-import { getCourse } from './components/utilities/firebase/api'
+import { getCourses } from './components/utilities/firebase/api'
+
 import './App.css'
 let isLoading = true
+const TITLE = 'CS Courses for 2018-2019'
 
 const App = () => {
   const [course, setCourse] = useState()
 
   const AllCourses = async () => {
-    const querySnapshot = await getCourse()
+    const querySnapshot = await getCourses()
     const docs = []
     querySnapshot.forEach((doc) => {
-      docs.push({ ...doc.data(), id: doc.id })
+      docs.push({ ...doc.data() })
     })
     setCourse(addScheduleTimes(docs[0]))
     isLoading = false
@@ -29,13 +31,10 @@ const App = () => {
   } else {
     return (
       <div className="container">
-      <Banner title={ course.title } />
+      <Banner title={ TITLE } />
       <CourseList courses={ course.courses } />
     </div>
     )
   }
 }
 export default App
-
-/*  <Banner title={ course.title } />
-      <CourseList courses={ course.courses } /> */
