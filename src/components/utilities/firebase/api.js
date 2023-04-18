@@ -2,8 +2,6 @@ import {
   collection,
   addDoc,
   updateDoc,
-  onSnapshot,
-  deleteDoc,
   doc,
   getDoc,
   getDocs

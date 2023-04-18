@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react'
 import { hasConflict } from './utilities/time'
 import { useNavigate } from 'react-router-dom'
 import { signInWithGoogle, auth, firebaseSignOut } from './utilities/firebase/firebase'

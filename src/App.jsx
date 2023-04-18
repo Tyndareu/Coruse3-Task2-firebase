@@ -6,18 +6,18 @@ import { getCourses } from './components/utilities/firebase/api'
 
 import './App.css'
 let isLoading = true
-const TITLE = 'CS Courses for 2018-2019'
 
 const App = () => {
   const [course, setCourse] = useState()
 
   const AllCourses = async () => {
     const querySnapshot = await getCourses()
-    const docs = []
+    let docs
+
     querySnapshot.forEach((doc) => {
-      docs.push({ ...doc.data() })
+      docs = doc.data()
     })
-    setCourse(addScheduleTimes(docs[0]))
+    setCourse(addScheduleTimes(docs))
     isLoading = false
   }
 
@@ -31,7 +31,7 @@ const App = () => {
   } else {
     return (
       <div className="container">
-      <Banner title={ TITLE } />
+      <Banner title={ course.title } />
       <CourseList courses={ course.courses } />
     </div>
     )
