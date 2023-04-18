@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Course, TermSelector, getCourseTerm } from '../Course'
+import { Course } from './Course'
+import { getCourseTerm } from './GetCourseTerm'
+import { TermSelector } from './TermSelector'
 
 export const CourseList = ({ courses }) => {
   const [term, setTerm] = useState('Fall')
@@ -12,8 +14,10 @@ export const CourseList = ({ courses }) => {
         <div className="course-list">
         {
           termCourses.map(course =>
-            <Course key={ course.id } course={ course }
-              selected={selected} setSelected={ setSelected }
+            <Course
+            key={ course.id }
+            course={ course }
+            selected={selected} setSelected={ setSelected }
             />)
         }
         </div>

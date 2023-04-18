@@ -1,13 +1,13 @@
 /*  */
 import { useState, useEffect } from 'react'
-import { Banner, addScheduleTimes } from './components/Course'
-import { CourseList } from './components/utilities/CourseList'
-import { getCourses } from './components/utilities/firebase/api'
+import { addScheduleTimes } from './Parts/Courses/AddScheduleTimes'
+import { CourseList } from './Parts/Courses/CourseList'
+import { getCourses } from './firebase/api'
+import './Css/Index.css'
 
-import './App.css'
 let isLoading = true
 
-const App = () => {
+export default function App () {
   const [course, setCourse] = useState()
 
   const AllCourses = async () => {
@@ -31,10 +31,9 @@ const App = () => {
   } else {
     return (
       <div className="container">
-      <Banner title={ course.title } />
+      <h1> CS Courses for 2018-2019</h1>
       <CourseList courses={ course.courses } />
     </div>
     )
   }
 }
-export default App

@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
-import { useForm } from '../components/utilities/UseForm'
-import { timeParts } from './Course'
-import { setData, getCourses } from './utilities/firebase/api'
+import { useForm } from './UseForm'
+import { timeParts } from '../../Components/TimeParts'
+import { setData, getCourses } from '../../firebase/api'
 import Button from 'react-bootstrap/Button'
 
 const isValidMeets = (meets) => {

@@ -37,9 +37,6 @@ dependencies:
   react-router-dom:
     specifier: ^6.10.0
     version: 6.10.0(react-dom@18.2.0)(react@18.2.0)
-  sort-by:
-    specifier: ^1.2.0
-    version: 1.2.0
 
 devDependencies:
   '@types/react':
@@ -2320,11 +2317,6 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /object-path@0.6.0:
-    resolution: {integrity: sha512-fxrwsCFi3/p+LeLOAwo/wyRMODZxdGBtUlWRzsEpsUVrisZbEfZ21arxLGfaWfcnqb8oHPNihIb4XPE8CQPN5A==}
-    engines: {node: '>=0.8.0'}
-    dev: false
-
   /object.assign@4.1.4:
     resolution: {integrity: sha512-1mxKf0e58bvyjSCtKYY4sRe9itRk3PJpquJOjeIkz885CczcI4IvJJDLPS72oowuSh+pBxUFROpX+TU++hxhZQ==}
     engines: {node: '>= 0.4'}
@@ -2754,12 +2746,6 @@ packages:
       get-intrinsic: 1.2.0
       object-inspect: 1.12.3
     dev: true
-
-  /sort-by@1.2.0:
-    resolution: {integrity: sha512-aRyW65r3xMnf4nxJRluCg0H/woJpksU1dQxRtXYzau30sNBOmf5HACpDd9MZDhKh7ALQ5FgSOfMPwZEtUmMqcg==}
-    dependencies:
-      object-path: 0.6.0
-    dev: false
 
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}

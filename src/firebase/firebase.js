@@ -20,6 +20,7 @@ initializeApp(firebaseConfig)
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore()
 
+export const firebaseSignOut = () => signOut(auth)
 export const signInWithGoogle = () => {
   signInWithPopup(getAuth(app), new GoogleAuthProvider())
 }
@@ -27,5 +28,3 @@ export const signInWithGoogle = () => {
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app)
 export default app
-
-export const firebaseSignOut = () => signOut(auth)
