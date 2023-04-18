@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom'
 import { useForm } from '../components/utilities/UseForm'
 import { timeParts } from './Course'
 import { setData, getCourses } from './utilities/firebase/api'
+import Button from 'react-bootstrap/Button'
 
 const isValidMeets = (meets) => {
   const parts = timeParts(meets)
@@ -66,7 +67,7 @@ const EditForm = () => {
         <input className="form-control" id="meets" name="meets" defaultValue={course.meets} />
         <div className="invalid-feedback">{errors?.meets}</div>
       </div>
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <Button variant='primary' type='submit'>Submit</Button> <Button variant='primary' type='submit'href='/'>Go to Home</Button>
     </form>
     </div>
   )

@@ -1,6 +1,8 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
-import { getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut } from 'firebase/auth'
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import { useAuthState } from 'react-firebase-hooks/auth'
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,5 +22,11 @@ const app = initializeApp(firebaseConfig)
 export const db = getFirestore()
 
 export const signInWithGoogle = () => {
-  signInWithPopup(getAuth(firebaseConfig), new GoogleAuthProvider())
+  signInWithPopup(getAuth(app), new GoogleAuthProvider())
 }
+
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app)
+export default app
+
+export const firebaseSignOut = () => signOut(auth)

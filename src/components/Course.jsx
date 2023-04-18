@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { hasConflict } from './utilities/time'
 import { useNavigate } from 'react-router-dom'
+import { signInWithGoogle, auth, firebaseSignOut } from './utilities/firebase/firebase'
+import { Button } from 'react-bootstrap'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 export const Banner = ({ title }) => (
     <h1>{ title }</h1>
@@ -51,15 +54,34 @@ const TermButton = ({ term, setTerm, checked }) => (
   </>
 )
 
-export const TermSelector = ({ term, setTerm }) => (
-  <div className="btn-group">
-  {
-    Object.values(terms).map(value => (
-      <TermButton key={value} term={value} setTerm={setTerm} checked={value === term} />
-    ))
-  }
-  </div>
+const SignInButton = () => (
+  <Button className="btn btn-primary m-1 p-2"
+    onClick={() => { signInWithGoogle() }}>
+    Sign In</Button>
 )
+const SignOutButton = () => (
+  <Button className="btn btn-primary m-1 p-2"
+        onClick={() => firebaseSignOut() }>Sign Out</Button>
+)
+
+export const TermSelector = ({ term, setTerm }) => {
+  const [user] = useAuthState(auth)
+
+  return (
+    <div className="btn-toolbar justify-content-center">
+      <div className="btn-group">
+
+      {
+        Object.values(terms).map(
+          value => <TermButton key={value} term={value} setTerm={setTerm} checked={value === term} />
+        )
+      }
+      { user ? <SignOutButton /> : <SignInButton /> }
+      </div>
+
+    </div>
+  )
+}
 
 const meetsPat = /^ *((?:M|Tu|W|Th|F)+) +(\d\d?):(\d\d) *[ -] *(\d\d?):(\d\d) *$/
 
