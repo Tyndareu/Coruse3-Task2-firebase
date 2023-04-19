@@ -1,5 +1,5 @@
 
-import { firebaseSignOut } from '../../firebase/firebase'
+import { firebaseSignOut } from '../firebase/firebase'
 import { Button } from 'react-bootstrap'
 
 export const SignOutButton = () => (

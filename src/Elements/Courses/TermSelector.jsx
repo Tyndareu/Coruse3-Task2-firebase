@@ -1,7 +1,7 @@
 import { auth } from '../../firebase/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { SignOutButton } from '../../Components/Buttons/SignOutButton'
-import { SignInButton } from '../../Components/Buttons/SignInButton'
+import { SignOutButton } from '../../Components/SignOutButton'
+import { SignInButton } from '../../Components/SignInButton'
 import { TermButton } from './TermButton'
 
 const terms = { F: 'Fall', W: 'Winter', S: 'Spring' }

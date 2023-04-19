@@ -15,7 +15,7 @@ export const CourseList = ({ courses }) => {
         {
           termCourses.map(course =>
             <Course
-            key={ course.id }
+            key={ course.db }
             course={ course }
             selected={selected} setSelected={ setSelected }
             />)

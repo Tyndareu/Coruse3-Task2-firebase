@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Index from '../Index'
-import EditForm from '../Parts/Form/EdifForm'
+import EditForm from '../Elements/Form/EdifForm'
 
 export const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import { signInWithGoogle } from '../../firebase/firebase'
+import { signInWithGoogle } from '../firebase/firebase'
 import { Button } from 'react-bootstrap'
 
 export const SignInButton = () => (
