@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { addScheduleTimes } from './Parts/Courses/AddScheduleTimes'
-import { CourseList } from './Parts/Courses/CourseList'
+import { addScheduleTimes } from './Elements/Courses/AddScheduleTimes'
+import { CourseList } from './Elements/Courses/CourseList'
 import { getCourses } from './firebase/api'
 import './Css/Index.css'
 
@@ -13,9 +13,9 @@ export default function App () {
     const querySnapshot = await getCourses()
     const docs = []
     querySnapshot.forEach((doc) => {
-      docs.push({ ...doc.data(), id: doc.id })
+      docs.push({ ...doc.data(), db: doc.id })
     })
-    setCourse(addScheduleTimes(docs[0]))
+    setCourse(addScheduleTimes(docs))
   }
 
   useEffect(() => {
