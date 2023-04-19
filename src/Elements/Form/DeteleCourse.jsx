@@ -1,7 +1,10 @@
 import Button from 'react-bootstrap/Button'
 import { deleteCourse } from '../../firebase/api'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../../firebase/firebase'
 
 export const DeleteCourse = ({ db, id }) => {
+  const [user] = useAuthState(auth)
   const handleDelete = async (db, id) => {
     if (window.confirm(`Delete ${id}?`)) {
       try {
@@ -15,6 +18,7 @@ export const DeleteCourse = ({ db, id }) => {
   }
   return (
     <Button
+    disabled={!user}
     onClick={() => handleDelete(db, id)}
     variant="danger">
       Delete

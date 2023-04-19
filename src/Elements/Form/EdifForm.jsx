@@ -1,13 +1,18 @@
 import { useLocation } from 'react-router-dom'
+import { auth } from '../../firebase/firebase'
 import { useForm } from './UseForm'
 import { submit } from './Sumit'
 import { DeleteCourse } from './DeteleCourse'
 import Button from 'react-bootstrap/Button'
 import { validateCourseData } from './ValidateCourseData'
+import { SignInButton } from '../../Components/SignInButton'
+import { SignOutButton } from '../../Components/SignOutButton'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 const EditForm = () => {
   const { state: course } = useLocation()
   const [errors, handleSubmit] = useForm(validateCourseData, submit)
+  const [user] = useAuthState(auth)
   return (
     <div className="mt-5" style={{ display: 'flex', justifyContent: 'center' }}>
       <form
@@ -42,13 +47,14 @@ const EditForm = () => {
           />
           <div className="invalid-feedback">{errors?.meets}</div>
         </div>
-        <Button variant="primary" type="submit">
+        <Button disabled={!user} variant="primary" type="submit">
           Submit
         </Button>{' '}
-        <Button variant="primary" type="submit" href="/">
+        <DeleteCourse db={course.db} id={course.id} />{' '}
+        <Button variant="success" type="submit" href="/">
           Go to Home
         </Button>{' '}
-        <DeleteCourse db={course.db} id={course.id}/>
+        {user ? <SignOutButton /> : <SignInButton />}
       </form>
     </div>
   )
