@@ -1,4 +1,4 @@
-import { timeParts } from '../../Components/TimeParts'
+import { timeParts } from './TimeParts'
 
 export const addCourseTimes = course => ({
   ...course,

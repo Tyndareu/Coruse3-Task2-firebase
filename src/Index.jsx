@@ -1,4 +1,3 @@
-/*  */
 import { useState, useEffect } from 'react'
 import { addScheduleTimes } from './Parts/Courses/AddScheduleTimes'
 import { CourseList } from './Parts/Courses/CourseList'
@@ -12,18 +11,16 @@ export default function App () {
 
   const AllCourses = async () => {
     const querySnapshot = await getCourses()
-    let docs
-
+    const docs = []
     querySnapshot.forEach((doc) => {
-      docs = doc.data()
+      docs.push({ ...doc.data(), id: doc.id })
     })
-    setCourse(addScheduleTimes(docs))
-    isLoading = false
+    setCourse(addScheduleTimes(docs[0]))
   }
 
   useEffect(() => {
-    isLoading = true
     AllCourses()
+    isLoading = false
   }, [])
 
   if (isLoading) {

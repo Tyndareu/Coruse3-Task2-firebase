@@ -1,50 +1,8 @@
 import { useLocation } from 'react-router-dom'
 import { useForm } from './UseForm'
-import { timeParts } from '../../Components/TimeParts'
-import { setData, getCourses } from '../../firebase/api'
+import { submit } from './Sumit'
 import Button from 'react-bootstrap/Button'
-
-const isValidMeets = (meets) => {
-  const parts = timeParts(meets)
-  return (meets === '' || (parts.days && !isNaN(parts.hours?.start) && !isNaN(parts.hours?.end)))
-}
-
-const validateCourseData = (key, val) => {
-  switch (key) {
-    case 'title': return /(^$|\w\w)/.test(val) ? '' : 'must be least two characters'
-    case 'meets': return isValidMeets(val) ? '' : 'must be days hh:mm-hh:mm'
-    default: return ''
-  }
-}
-let courses
-let allCourses
-
-const submit = async (values) => {
-  const AllCourses = async () => {
-    const querySnapshot = await getCourses()
-    querySnapshot.forEach((doc) => {
-      allCourses = doc.data()
-    })
-    courses = ((allCourses.courses))
-    for (let i = 0; i < courses.length; i++) {
-      if (courses[i].id === values.id) {
-        allCourses.courses[i].meets = values.meets
-        allCourses.courses[i].title = values.title
-      }
-    }
-  }
-
-  if (window.confirm(`Change ${values.id} to ${values.title}: ${values.meets}`)) {
-    await AllCourses()
-    try {
-      await setData('G03ZWyl44v7NDzYMWVQv', allCourses)
-      alert('Update Done!!')
-      window.location.replace('/')
-    } catch (error) {
-      alert(error)
-    }
-  }
-}
+import { validateCourseData } from './ValidateCourseData'
 
 const EditForm = () => {
   const { state: course } = useLocation()
