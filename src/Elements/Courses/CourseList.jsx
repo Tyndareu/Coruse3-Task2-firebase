@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Course } from './Course'
-import { getCourseTerm } from './GetCourseTerm'
+import { getCourseTerm } from './Utils'
 import { TermSelector } from './TermSelector'
 
 export const CourseList = ({ courses }) => {

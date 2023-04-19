@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { addScheduleTimes } from './Elements/Courses/AddScheduleTimes'
+import { addScheduleTimes } from './Elements/Courses/Utils'
 import { CourseList } from './Elements/Courses/CourseList'
 import { getCourses } from './firebase/api'
 import './Css/Index.css'

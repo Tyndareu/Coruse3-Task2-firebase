@@ -1,4 +1,4 @@
-import { timeParts } from '../Courses/TimeParts'
+import { timeParts } from '../Courses/Utils'
 
 export const isValidMeets = (meets) => {
   const parts = timeParts(meets)

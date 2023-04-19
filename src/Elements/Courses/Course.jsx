@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { getCourseTerm } from './GetCourseTerm'
-import { hasConflict } from './Time'
-import { toggle } from './Toggle'
+import { getCourseTerm, hasConflict, toggle } from './Utils'
 
 const getCourseNumber = course => (
   course.id.slice(1, 4)
